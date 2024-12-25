@@ -1,6 +1,8 @@
 'use client';
 
+import { Direction } from '@/components/Direction';
 import { Homepage } from '@/components/Homepage';
+import { RSVP } from '@/components/RSVP';
 import { styled } from 'styled-components';
 
 const MainContainer = styled.div`
@@ -21,13 +23,13 @@ export default function Home() {
         <Homepage />
       </Section>
 
-      {/* <Section id="rsvp">
-        <RSVP />
+      <Section id="ceremony">
+        <Direction />
       </Section>
 
-      <Section id="direction">
-        <Direction />
-      </Section> */}
+      <Section id="contact">
+        <RSVP />
+      </Section>
     </MainContainer>
   );
 }

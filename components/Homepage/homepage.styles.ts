@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import { media } from '@/styles/breakpoints';
 
 export const HomepageContainer = styled.div`
-  width: 100%;
+  width: calc(100%);
   position: relative;
-  padding: 16px;
+  padding: 16px 0;
 
   ${media.laptop} {
+    width: calc(100% - 48px);
     padding: 24px;
     height: calc(100svh - 142px);
     max-height: 700px;

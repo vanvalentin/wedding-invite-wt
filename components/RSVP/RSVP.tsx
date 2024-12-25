@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Form, FormGroup, Label, Input, Textarea, Button } from '../styled';
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Textarea,
+  Button,
+  FormRow,
+  Sublabel,
+  Subtitle,
+  Title,
+} from './rsvp.styles';
 
 interface Guest {
   firstName: string;
@@ -9,83 +20,69 @@ interface Guest {
 }
 
 export default function RSVP() {
-  const [guests, setGuests] = useState<Guest[]>([
-    { firstName: '', lastName: '' },
-  ]);
+  const [guest, setGuest] = useState<Guest>({ firstName: '', lastName: '' });
   const [notes, setNotes] = useState('');
 
-  const handleAddGuest = () => {
-    setGuests([...guests, { firstName: '', lastName: '' }]);
-  };
-
-  const handleGuestChange = (
-    index: number,
-    field: keyof Guest,
-    value: string
-  ) => {
-    const newGuests = [...guests];
-    newGuests[index][field] = value;
-    setGuests(newGuests);
+  const handleGuestChange = (field: keyof Guest, value: string) => {
+    setGuest({ ...guest, [field]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
-    console.log({ guests, notes });
+    console.log({ guest, notes });
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <h1 className="text-4xl font-light mb-8 text-center">RSVP</h1>
+    <Form onSubmit={handleSubmit}>
+      <Title>Contact Us</Title>
+      <Subtitle>
+        If you have any questions or anything you would like to let us know, you
+        can contact us directly or you can send us a message from here as well!
+      </Subtitle>
 
-        {guests.map((guest, index) => (
-          <FormGroup key={index}>
-            <h2 className="text-xl mb-4">Guest {index + 1}</h2>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor={`firstName-${index}`}>First Name</Label>
-                <Input
-                  id={`firstName-${index}`}
-                  value={guest.firstName}
-                  onChange={(e) =>
-                    handleGuestChange(index, 'firstName', e.target.value)
-                  }
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor={`lastName-${index}`}>Last Name</Label>
-                <Input
-                  id={`lastName-${index}`}
-                  value={guest.lastName}
-                  onChange={(e) =>
-                    handleGuestChange(index, 'lastName', e.target.value)
-                  }
-                  required
-                />
-              </div>
-            </div>
-          </FormGroup>
-        ))}
-
-        <Button type="button" onClick={handleAddGuest} className="mb-6">
-          Add Guest
-        </Button>
-
+      <FormRow>
         <FormGroup>
-          <Label htmlFor="notes">
-            Notes (Dietary Restrictions, Questions, etc.)
-          </Label>
-          <Textarea
-            id="notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
+          <Label htmlFor="firstName">First Name</Label>
+          <Sublabel htmlFor="firstName">Prénom</Sublabel>
+          <Input
+            id="firstName"
+            value={guest.firstName}
+            onChange={(e) => handleGuestChange('firstName', e.target.value)}
+            placeholder="Enter your first name"
+            required
           />
         </FormGroup>
+        <FormGroup>
+          <Label htmlFor="lastName">Last Name</Label>
+          <Sublabel htmlFor="lastName">Nom</Sublabel>
+          <Input
+            id="lastName"
+            value={guest.lastName}
+            onChange={(e) => handleGuestChange('lastName', e.target.value)}
+            placeholder="Enter your last name"
+            required
+          />
+        </FormGroup>
+      </FormRow>
 
-        <Button type="submit">Submit RSVP</Button>
-      </Form>
-    </>
+      <FormGroup>
+        <Label htmlFor="notes">
+          Questions, dietary restrictions or anything else :)
+        </Label>
+        <Sublabel htmlFor="notes">
+          Questions, restrictions alimentaires ou autre :)
+        </Sublabel>
+        <Textarea
+          id="notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Please let us know if you have any questions or dietary restrictions we should be aware of."
+          required
+        />
+      </FormGroup>
+
+      <Button type="submit">Send Message</Button>
+    </Form>
   );
 }

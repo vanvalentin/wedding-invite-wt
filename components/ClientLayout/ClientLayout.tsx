@@ -1,5 +1,6 @@
 'use client';
 
+import Head from 'next/head';
 import {
   Container,
   Header,
@@ -47,9 +48,12 @@ export default function ClientLayout({
             <Logo onClick={() => scrollToSection('home')}>Wini & Valentin</Logo>
           </LeftNav>
           <RightNav>
-            <NavLink onClick={() => scrollToSection('rsvp')}>RSVP</NavLink>•
-            <NavLink onClick={() => scrollToSection('direction')}>
-              DIRECTION
+            <NavLink onClick={() => scrollToSection('ceremony')}>
+              CEREMONY
+            </NavLink>
+            •
+            <NavLink onClick={() => scrollToSection('contact')}>
+              CONTACT
             </NavLink>
           </RightNav>
         </Nav>

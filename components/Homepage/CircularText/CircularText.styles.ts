@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const CircularTextContainer = styled.div`
   position: absolute;
   top: 0;
-  right: 24px;
+  right: 0px;
   width: 120px;
   height: 120px;
   animation: rotate 20s linear infinite;
@@ -20,7 +20,6 @@ export const CircularTextContainer = styled.div`
 
   ${media.laptop} {
     position: relative;
-    left: 0;
     width: 140px;
     height: 140px;
   }

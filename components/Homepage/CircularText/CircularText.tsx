@@ -8,7 +8,7 @@ export default function CircularText() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link href="/rsvp">
+    <Link href="#ceremony">
       <CircularTextContainer
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
