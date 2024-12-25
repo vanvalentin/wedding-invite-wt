@@ -1,24 +1,20 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Form,
   FormGroup,
   Label,
   Input,
   Textarea,
-  Button
-} from '../../components/styled'
+  Button,
+} from '../../components/styled';
 
 interface Guest {
-  firstName: string
-  lastName: string
+  firstName: string;
+  lastName: string;
 }
 
 export default function Direction() {
-  return (
-    <>
-    </>
-  )
+  return <></>;
 }
-
