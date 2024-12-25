@@ -12,6 +12,7 @@ import {
   Sublabel,
   Subtitle,
   Title,
+  Message,
 } from './rsvp.styles';
 
 interface Guest {
@@ -22,6 +23,11 @@ interface Guest {
 export default function RSVP() {
   const [guest, setGuest] = useState<Guest>({ firstName: '', lastName: '' });
   const [notes, setNotes] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{
+    type: 'success' | 'error';
+    text: string;
+  } | null>(null);
 
   const handleGuestChange = (field: keyof Guest, value: string) => {
     setGuest({ ...guest, [field]: value });
@@ -29,8 +35,37 @@ export default function RSVP() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log({ guest, notes });
+    setIsLoading(true);
+    setMessage(null);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ guest, notes }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Clear form after successful submission
+      setGuest({ firstName: '', lastName: '' });
+      setNotes('');
+      setMessage({
+        type: 'success',
+        text: 'Message sent successfully! We will get back to you soon.',
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage({
+        type: 'error',
+        text: 'Failed to send message. Please try again.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -82,7 +117,11 @@ export default function RSVP() {
         />
       </FormGroup>
 
-      <Button type="submit">Send Message</Button>
+      {message && <Message type={message.type}>{message.text}</Message>}
+
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? 'Sending...' : 'Send Message'}
+      </Button>
     </Form>
   );
 }

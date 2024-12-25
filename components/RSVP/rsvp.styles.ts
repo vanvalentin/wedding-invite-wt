@@ -127,3 +127,18 @@ export const Button = styled.button`
     transform: translateY(0);
   }
 `;
+
+interface MessageProps {
+  type: 'success' | 'error';
+}
+
+export const Message = styled.div<MessageProps>`
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background-color: ${({ type }) =>
+    type === 'success' ? '#e6ffe6' : '#ffe6e6'};
+  color: ${({ type }) => (type === 'success' ? '#006600' : '#cc0000')};
+  border: 1px solid
+    ${({ type }) => (type === 'success' ? '#b3ffb3' : '#ffb3b3')};
+`;
