@@ -1,8 +1,6 @@
 'use client';
 
 import { Homepage } from '@/components/Homepage';
-import { RSVP } from '@/components/RSVP';
-import { Direction } from '@/components/Direction';
 import { styled } from 'styled-components';
 
 const MainContainer = styled.div`
