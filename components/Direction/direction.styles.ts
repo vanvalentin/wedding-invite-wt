@@ -105,3 +105,9 @@ export const TimelineSub = styled.div`
   font-weight: 400;
   opacity: 0.8;
 `;
+
+export const AttireInfo = styled.div`
+  text-align: center;
+  margin-top: 2rem;
+  text-transform: uppercase;
+`;

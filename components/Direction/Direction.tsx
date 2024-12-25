@@ -13,6 +13,7 @@ import {
   TimelineItem,
   TimelineMain,
   TimelineSub,
+  AttireInfo,
 } from './direction.styles';
 
 export default function Ceremony() {
@@ -63,6 +64,8 @@ export default function Ceremony() {
           <TimelineSub>Dîner à 20h</TimelineSub>
         </TimelineItem>
       </Timeline>
+
+      <AttireInfo>Smart casual / Semi-formal attire</AttireInfo>
     </DirectionContainer>
   );
 }
