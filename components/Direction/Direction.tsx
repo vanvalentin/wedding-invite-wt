@@ -31,7 +31,7 @@ export default function Ceremony() {
 
       <DateWrapper>
         <Date>Saturday, 1st March 2025</Date>
-        <SubDate>2025 年 3 月 1 號星期六</SubDate>
+        {/* <SubDate>2025 年 3 月 1 號星期六</SubDate> */}
         <SubDate>Samedi 1er Mars 2025</SubDate>
       </DateWrapper>
 
@@ -50,17 +50,17 @@ export default function Ceremony() {
       <Timeline>
         <TimelineItem>
           <TimelineMain>Reception at 6PM</TimelineMain>
-          <TimelineSub>下午六點接待</TimelineSub>
+          {/* <TimelineSub>下午六點接待</TimelineSub> */}
           <TimelineSub>Accueil à 18h</TimelineSub>
         </TimelineItem>
         <TimelineItem>
           <TimelineMain>Ceremony at 6:30PM</TimelineMain>
-          <TimelineSub>儀式喺下晝六點半</TimelineSub>
+          {/* <TimelineSub>儀式喺下晝六點半</TimelineSub> */}
           <TimelineSub>Cérémonie à 18h30</TimelineSub>
         </TimelineItem>
         <TimelineItem>
           <TimelineMain>Banquet at 8PM</TimelineMain>
-          <TimelineSub>晚上八點嘅宴會</TimelineSub>
+          {/* <TimelineSub>晚上八點嘅宴會</TimelineSub> */}
           <TimelineSub>Dîner à 20h</TimelineSub>
         </TimelineItem>
       </Timeline>
